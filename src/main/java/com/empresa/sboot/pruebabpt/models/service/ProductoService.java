@@ -19,7 +19,23 @@ public class ProductoService {
         return productoRepository.findById(id).orElse(null);
     }
 
+    public List<Producto> findByNitProveedor(String nit){
+        return productoRepository.findByNitProveedor(nit);
+    }
+
+    public List<Object[]> findByPrecioMayorQue(){
+        return productoRepository.findByPrecioMayorQue();
+    }
+
+    public List<Object[]> findNameByNitProveedor(String nit){
+        return productoRepository.findNameByNitProveedor(nit);
+    }
+
     public List<Producto> findAll() {
         return (List<Producto>) productoRepository.findAll();
+    }
+
+    public List<Object[]> findByPrecioEntre(){
+        return productoRepository.findByPrecioEntre();
     }
 }
