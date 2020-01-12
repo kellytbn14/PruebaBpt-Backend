@@ -36,7 +36,7 @@ public class ProductoController {
     }
 
     @GetMapping("/producto/{id}")
-    public ProductoDto show(@PathVariable(value = "id") Long id){
+    public ProductoDto show(@PathVariable(value = "id") String id){
         ProductoDto productoDto = modelMapper.map(productoService.findById(id), ProductoDto.class);
         return productoDto;
     }
@@ -48,16 +48,16 @@ public class ProductoController {
         return productoDtoList;
     }
 
-    @GetMapping("/producto/getproductosmayorque")
-    public List<ModelMap> getProductosMayorQue(){
-        List<Object[]> objects = productoService.findByPrecioMayorQue();
+    @GetMapping("/producto/getproductosmayorque/{valor}")
+    public List<ModelMap> getProductosMayorQue(@PathVariable(value = "valor") @Valid int valor){
+        List<Object[]> objects = productoService.findByPrecioMayorQue(valor);
 
         List<ModelMap> modelMapList = new ArrayList<>();
 
         for (Object[] object: objects) {
             ModelMap modelMap = new ModelMap();
-            modelMap.addAttribute("nombre",object[0]);
-            modelMap.addAttribute("precio",object[1]);
+            modelMap.addAttribute("nomProducto",object[0]);
+            modelMap.addAttribute("precioProducto",object[1]);
             modelMapList.add(modelMap);
         }
 
@@ -86,16 +86,16 @@ public class ProductoController {
         return productoDtoList;
     }
 
-    @GetMapping("/producto/getproductosentre")
-    public List<ModelMap> getProductosEntre(){
-        List<Object[]> objects = productoService.findByPrecioEntre();
+    @GetMapping("/producto/getproductosentre/{menor}/{mayor}")
+    public List<ModelMap> getProductosEntre(@PathVariable(value = "menor") @Valid int menor, @PathVariable(value = "mayor") @Valid int mayor){
+        List<Object[]> objects = productoService.findByPrecioEntre(menor, mayor);
 
         List<ModelMap> modelMapList = new ArrayList<>();
 
         for (Object[] object: objects) {
             ModelMap modelMap = new ModelMap();
-            modelMap.addAttribute("nombre",object[0]);
-            modelMap.addAttribute("precio",object[1]);
+            modelMap.addAttribute("nomProducto",object[0]);
+            modelMap.addAttribute("precioProducto",object[1]);
             modelMapList.add(modelMap);
         }
 

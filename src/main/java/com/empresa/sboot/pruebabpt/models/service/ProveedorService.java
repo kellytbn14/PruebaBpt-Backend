@@ -33,7 +33,7 @@ public class ProveedorService {
         return (List<Proveedor>) proveedorRepository.findAll();
     }
 
-    public List<Object[]> findByCodProducto(Long codigo){
+    public List<Object[]> findByCodProducto(String codigo){
         return proveedorRepository.findByCodProducto(codigo);
     }
 

@@ -10,6 +10,6 @@ import java.util.List;
 public interface ProveedorRepository extends CrudRepository<Proveedor, String> {
 
     @Query(value = "SELECT nomproveedor FROM proveedor,producto WHERE proveedor.nit=producto.nitproveedor AND producto.codproducto = ?1", nativeQuery = true)
-    List<Object[]> findByCodProducto(Long codigo);
+    List<Object[]> findByCodProducto(String codigo);
 
 }

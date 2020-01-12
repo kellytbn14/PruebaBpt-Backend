@@ -43,14 +43,14 @@ public class ProveedorController {
     }
 
     @GetMapping("/proveedor/getnameproveedorporcod/{id}")
-    public List<ModelMap> getNameProveedorPorCodigoProducto(@PathVariable(value = "id") @Valid Long id){
+    public List<ModelMap> getNameProveedorPorCodigoProducto(@PathVariable(value = "id") @Valid String id){
 
         List<Object[]> objects = proveedorService.findByCodProducto(id);
         List<ModelMap> modelMapList = new ArrayList<>();
 
         for (Object[] object: objects) {
             ModelMap modelMap = new ModelMap();
-            modelMap.addAttribute("codigo",object[0]);
+            modelMap.addAttribute("nomProveedor",object[0]);
             modelMapList.add(modelMap);
         }
 

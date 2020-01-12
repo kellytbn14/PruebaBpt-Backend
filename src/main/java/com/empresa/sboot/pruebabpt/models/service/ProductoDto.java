@@ -2,16 +2,16 @@ package com.empresa.sboot.pruebabpt.models.service;
 
 public class ProductoDto {
 
-    private int codProducto;
+    private String codProducto;
     private String nitProveedor;
     private int precioProducto;
     private String nomProducto;
 
-    public int getCodProducto() {
+    public String getCodProducto() {
         return codProducto;
     }
 
-    public void setCodProducto(int codProducto) {
+    public void setCodProducto(String codProducto) {
         this.codProducto = codProducto;
     }
 

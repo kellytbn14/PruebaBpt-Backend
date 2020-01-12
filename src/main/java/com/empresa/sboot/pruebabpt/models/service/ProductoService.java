@@ -15,7 +15,7 @@ public class ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
-    public Producto findById(Long id){
+    public Producto findById(String id){
         return productoRepository.findById(id).orElse(null);
     }
 
@@ -23,8 +23,8 @@ public class ProductoService {
         return productoRepository.findByNitProveedor(nit);
     }
 
-    public List<Object[]> findByPrecioMayorQue(){
-        return productoRepository.findByPrecioMayorQue();
+    public List<Object[]> findByPrecioMayorQue(int valor){
+        return productoRepository.findByPrecioMayorQue(valor);
     }
 
     public List<Object[]> findNameByNitProveedor(String nit){
@@ -35,7 +35,7 @@ public class ProductoService {
         return (List<Producto>) productoRepository.findAll();
     }
 
-    public List<Object[]> findByPrecioEntre(){
-        return productoRepository.findByPrecioEntre();
+    public List<Object[]> findByPrecioEntre(int menor, int mayor){
+        return productoRepository.findByPrecioEntre(menor, mayor);
     }
 }
