@@ -79,6 +79,13 @@ public class ProductoController {
         return modelMapList;
     }
 
+    @GetMapping("/producto/getproductospornit/{id}")
+    public List<ProductoDto> getProductosPorNit(@PathVariable(value = "id") @Valid String id){
+        Type listType = new TypeToken<List<ProductoDto>>(){}.getType();
+        List<ProductoDto> productoDtoList = modelMapper.map(productoService.findByNitProveedor(id),listType);
+        return productoDtoList;
+    }
+
     @GetMapping("/producto/getproductosentre")
     public List<ModelMap> getProductosEntre(){
         List<Object[]> objects = productoService.findByPrecioEntre();
