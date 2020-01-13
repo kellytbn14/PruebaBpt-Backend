@@ -1,5 +1,6 @@
 package com.empresa.sboot.pruebabpt.controllers;
 
+import com.empresa.sboot.pruebabpt.facade.ProveedorFacade;
 import com.empresa.sboot.pruebabpt.models.entity.Proveedor;
 import com.empresa.sboot.pruebabpt.models.service.ProveedorDto;
 import com.empresa.sboot.pruebabpt.models.service.ProveedorService;
@@ -23,16 +24,20 @@ public class ProveedorController {
 
     private ProveedorService proveedorService;
     private ModelMapper modelMapper;
+    private final ProveedorFacade proveedorFacade;
 
-    public ProveedorController(ProveedorService proveedorService, ModelMapper modelMapper) {
-        this.proveedorService = proveedorService;
+    public ProveedorController(ProveedorService proveedorService, ModelMapper modelMapper, ProveedorFacade proveedorFacade) {
         this.modelMapper = modelMapper;
+        this.proveedorService = proveedorService;
+        this.proveedorFacade = proveedorFacade;
     }
 
     @GetMapping("/proveedor")
     public List<ProveedorDto> findAll() {
-        Type listType = new TypeToken<List<ProveedorDto>>(){}.getType();
-        List<ProveedorDto> proveedorDtoList = modelMapper.map(proveedorService.findAll(),listType);
+       // Type listType = new TypeToken<List<ProveedorDto>>(){}.getType();
+      //  List<ProveedorDto> proveedorDtoList = modelMapper.map(proveedorService.findAll(),listType);
+        List<ProveedorDto> proveedorDtoList = this.proveedorFacade.findAll();
+
         return proveedorDtoList;
     }
 
