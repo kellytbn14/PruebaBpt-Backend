@@ -23,25 +23,15 @@ DROP TABLE IF EXISTS `producto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `producto` (
-  `codproducto` int(11) NOT NULL AUTO_INCREMENT,
+  `codproducto` varchar(45) NOT NULL,
   `nitproveedor` varchar(45) DEFAULT NULL,
   `precioproducto` int(11) DEFAULT NULL,
   `nomproducto` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`codproducto`),
   KEY `fk_prodprov_idx` (`nitproveedor`),
   CONSTRAINT `fk_prodprov` FOREIGN KEY (`nitproveedor`) REFERENCES `proveedor` (`nit`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `producto`
---
-
-LOCK TABLES `producto` WRITE;
-/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'123',3000,'salchicha');
-/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -52,4 +42,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-10 17:13:20
+-- Dump completed on 2020-01-12 19:17:11
